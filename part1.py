@@ -12,10 +12,6 @@ diabetes = pd.read_csv('diabetes.csv')
 # Drop any nan values if any exist
 diabetes_data = diabetes.select_dtypes(include=[np.number]).interpolate().dropna()
 
-# Determine data(X) vs target(y)
-X = diabetes_data.drop('Outcome', axis=1)
-y = diabetes_data['Outcome']
-
 # If the column is non-numeric, dummify the data
 for column in diabetes_data:
     if np.issubdtype(diabetes_data[column].dtype, np.number) == False:
@@ -23,6 +19,10 @@ for column in diabetes_data:
             diabetes_data,
             columns=[column]
         )
+
+# Determine data(X) vs target(y)
+X = diabetes_data.drop('Outcome', axis=1)
+y = diabetes_data['Outcome']
 
 # Split the data set into training and testing parts
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5, random_state=0)

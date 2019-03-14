@@ -13,7 +13,8 @@ df_boston['target'] = pd.Series(boston_data.target)
 df_boston.head()
 
 y = df_boston.CRIM
-X = df_boston[["NOX", "LSTAT"]]
+X = df_boston[["LSTAT", "NOX"]]
+
 X_train, X_test, y_train, y_test = train_test_split(
                                     X, y, random_state=42, test_size=.33)
 
@@ -41,7 +42,8 @@ for column in boston_data_frame:
 
 ##Build the reggression model
 y = boston_data_frame.CRIM
-X = boston_data_frame[["NOX", "LSTAT"]]
+X = boston_data_frame[["LSTAT", "TAX"]]
+from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(
                                     X, y, random_state=42, test_size=.33)
 
